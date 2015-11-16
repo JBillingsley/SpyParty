@@ -20,11 +20,12 @@ public class NPC : MonoBehaviour {
            // state = (AIStates)Random.Range(0, 3);
             Debug.Log(state);
         }
+        Player.turn += StateMachine;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        StateMachine();
+       // StateMachine();
 	}
 
     // States: Wander, Persue, Idle

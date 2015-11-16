@@ -4,6 +4,8 @@ using System.Collections;
 [RequireComponent(typeof(Collider))]
 public class Player : MonoBehaviour {
     public GameObject currentSquare;
+    public delegate void PlayerTurn();
+    public static event PlayerTurn turn;
     private bool selected = false;
 
 	// Use this for initialization
@@ -17,6 +19,7 @@ public class Player : MonoBehaviour {
         currentSquare = newSquare;
         updateLocation();
         updateCurrentSquare();
+        turn();
     }
 
     void updateLocation() {
@@ -26,9 +29,4 @@ public class Player : MonoBehaviour {
     void updateCurrentSquare() {
         currentSquare.GetComponent<ClickObject>().holdingPlayer();
     }
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
 }

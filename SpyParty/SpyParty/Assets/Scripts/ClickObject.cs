@@ -1,39 +1,69 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 [RequireComponent(typeof (Collider))]
 public class ClickObject : MonoBehaviour {
-    private Vector3 initialPosition;
-    private bool highlighted = false;
-
+    //private Vector3 initialPosition;
+    private bool highlightable = false;
+   // private bool clicked = false;
+    public List<GameObject> neighborCubes;
     public GameObject TextPanel;
 
-    void Start() {
-        GetComponent<Renderer>().material.color = Color.white;
-        initialPosition = transform.position;
-    }
-
-	void OnMouseDown() {
-        if(GetComponent<Renderer>().material.color.Equals(Color.white)) {
-            GetComponent<Renderer>().material.color = Color.black;
-        } else {
-            GetComponent<Renderer>().material.color = Color.white;
+    // This is called when the currentSquare the player is in is this square
+    public void holdingPlayer() {
+        foreach(GameObject neighbor in neighborCubes) {
+            neighbor.GetComponent<ClickObject>().selectedSquare();
         }
     }
 
-    void OnMouseOver() {
-        highlighted = true;
+    // This is called when this square is a legal move, this flags this square as available
+    public void selectedSquare() {
+        this.highlightable = true;
+        GetComponent<Renderer>().material.color = Color.green;
     }
 
+    public void clearSquares() {
+        foreach(GameObject neighbor in neighborCubes) {
+            neighbor.GetComponent<ClickObject>().notAvailable();
+        }
+    }
+
+    public void notAvailable() {
+        highlightable = false;
+        GetComponent<Renderer>().material.color = Color.white;
+    }
+
+    void Start() {
+       // GetComponent<Renderer>().material.color = Color.white;
+       // initialPosition = transform.position;
+    }
+
+    // when the cube is clicked
+	void OnMouseDown() {
+        // if it is a legal square
+        if(highlightable) {
+            // the player moves to this square
+            GameObject.Find("Player").GetComponent<Player>().moving(this.gameObject);
+        }
+    }
+
+    /*
+    void OnMouseOver() {
+        highlightable = true;
+    }
+    */
+
     void Update() {
-        if(highlighted) {
-            transform.position = new Vector3(initialPosition.x, initialPosition.y, initialPosition.z - 1f);
-            TextPanel.SetActive(true);
-            highlighted = false;
+        if(highlightable) {
+            //transform.position = new Vector3(initialPosition.x, initialPosition.y, initialPosition.z - 1f);
+           // GetComponent<Renderer>().material.color = Color.green;
+           // TextPanel.SetActive(true);
+          //  highlightable = false;
         } else {
-            transform.position = initialPosition;
-            TextPanel.SetActive(false);
+          //  GetComponent<Renderer>().material.color = Color.white;
+            //TextPanel.SetActive(false);
         }
     }
 }

@@ -8,6 +8,7 @@ public class NPC : MonoBehaviour {
     public GameObject board;
     private GameObject goalPoint;
     private AIStates state;
+    private float animationTime = 0.6f;
 
 	// Use this for initialization
 	void Start () {
@@ -22,11 +23,6 @@ public class NPC : MonoBehaviour {
         }
         Player.turn += StateMachine;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-       // StateMachine();
-	}
 
     // States: Wander, Persue, Idle
     void StateMachine() {
@@ -35,7 +31,6 @@ public class NPC : MonoBehaviour {
                 // this means the ai needs a place to go
                 if(goalPoint == null) {
                     // This line sucks but it chooses a random square on the board
-                    Debug.Log(board.GetComponentsInChildren<ClickObject>()[Random.Range(0,board.GetComponentsInChildren<ClickObject>().Length)]);
                     goalPoint = board.GetComponentsInChildren<ClickObject>()[Random.Range(0, board.GetComponentsInChildren<ClickObject>().Length)].gameObject;
                 } else if(currentSquare.Equals(goalPoint)) {
                     // you done! 
@@ -75,8 +70,12 @@ public class NPC : MonoBehaviour {
         }
         return null;
     }
+
     void updateLocation() {
-        transform.position = new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y, currentSquare.transform.position.z - 1f);
+        iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y, currentSquare.transform.position.z - 1f), 
+                                              "time", animationTime, 
+                                              "easetype", iTween.EaseType.easeInOutQuad));
+        //transform.position = new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y, currentSquare.transform.position.z - 1f);
     }
 
     AIStates selectRandomState() {

@@ -6,6 +6,7 @@ using System.Collections;
 public class NPC : MonoBehaviour {
     public GameObject currentSquare;
     public GameObject board;
+    public float YOffsetFromBoard;
     private GameObject goalPoint;
     private AIStates state;
     private float animationTime = 0.6f;
@@ -72,7 +73,7 @@ public class NPC : MonoBehaviour {
     }
 
     void updateLocation() {
-        iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y, currentSquare.transform.position.z - 1f), 
+        iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y + YOffsetFromBoard, currentSquare.transform.position.z), 
                                               "time", animationTime, 
                                               "easetype", iTween.EaseType.easeInOutQuad));
         //transform.position = new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y, currentSquare.transform.position.z - 1f);

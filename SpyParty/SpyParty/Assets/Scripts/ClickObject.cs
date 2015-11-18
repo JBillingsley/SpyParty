@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ClickObject : MonoBehaviour {
     private bool highlightable = false;
     public List<GameObject> neighborCubes;
-    public GameObject TextPanel;
+    //public GameObject TextPanel;
 
     // This is called when the currentSquare the player is in is this square
     public void holdingPlayer() {
@@ -40,5 +40,9 @@ public class ClickObject : MonoBehaviour {
             // the player moves to this square
             GameObject.Find("Player").GetComponent<Player>().moving(this.gameObject);
         }
+    }
+
+    void Start() {
+        Debug.Log(string.Format("{0} has position {1}", gameObject.name, transform.position));
     }
 }

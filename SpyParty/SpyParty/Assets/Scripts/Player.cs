@@ -4,9 +4,10 @@ using System.Collections;
 [RequireComponent(typeof(Collider))]
 public class Player : MonoBehaviour {
     public GameObject currentSquare;
+    public float YOffsetFromBoard;
     public delegate void PlayerTurn();
     public static event PlayerTurn turn;
-    private bool selected = false;
+   // private bool selected = false;
     private float animationTime = 0.6f;
 
 	// Use this for initialization
@@ -24,13 +25,16 @@ public class Player : MonoBehaviour {
     }
 
     void updateLocation() {
-        iTween.MoveTo(gameObject, iTween.Hash("position",new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y, currentSquare.transform.position.z - 1f),
+        Debug.Log(string.Format("The player position is {0}", transform.position));
+        Debug.Log(string.Format("The currentSquare position is {0}", currentSquare.transform.position));
+        iTween.MoveTo(gameObject, iTween.Hash("position",new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y + YOffsetFromBoard, currentSquare.transform.position.z),
                                               "time", animationTime,
                                               "easetype",iTween.EaseType.easeInOutQuad,
                                               "oncomplete", "updateCurrentSquare"));
     }
 
     void updateCurrentSquare() {
+        Debug.Log(string.Format("The players updated position is {0}", transform.position));
         currentSquare.GetComponent<ClickObject>().holdingPlayer();
         finished();
     }

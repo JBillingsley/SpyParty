@@ -36,6 +36,8 @@ public class Player : MonoBehaviour {
     }
 
     void updateLocation() {
+        Debug.Log(string.Format("The player position is {0}", transform.position));
+        Debug.Log(string.Format("The currentSquare position is {0}", currentSquare.transform.position));
         iTween.MoveTo(gameObject, iTween.Hash("position",new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y + YOffsetFromBoard, currentSquare.transform.position.z),
                                               "time", animationTime,
                                               "easetype",iTween.EaseType.easeInOutQuad,
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour {
     }
 
     void updateCurrentSquare() {
+        Debug.Log(string.Format("The players updated position is {0}", transform.position));
         currentSquare.GetComponent<ClickObject>().holdingPlayer();
         finished();
     }

@@ -3,10 +3,21 @@ using System.Collections;
 
 [RequireComponent(typeof(Collider))]
 public class Player : MonoBehaviour {
+    public GameObject startSquare;
     public GameObject currentSquare;
     public float YOffsetFromBoard;
     public delegate void PlayerTurn();
     public static event PlayerTurn turn;
+
+    private static Player _instance;
+    public static Player instance {
+        get {
+            if(_instance == null) {
+                _instance = GameObject.Find("Player").GetComponent<Player>();
+            }
+            return _instance;
+        }
+    }
    // private bool selected = false;
     private float animationTime = 0.6f;
 
@@ -40,6 +51,16 @@ public class Player : MonoBehaviour {
     public void finished() {
         if(turn != null) {
             turn();
+            currentSquare.GetComponent<ClickObject>().holdingPlayer();
         }
+    }
+
+    public void caught() {
+        currentSquare.GetComponent<ClickObject>().clearSquares();
+        currentSquare = startSquare;
+        iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y + YOffsetFromBoard, currentSquare.transform.position.z),
+                                              "time", animationTime,
+                                              "easetype", iTween.EaseType.easeInOutQuad));
+        currentSquare.GetComponent<ClickObject>().holdingPlayer();
     }
 }

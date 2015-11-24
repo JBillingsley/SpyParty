@@ -10,10 +10,12 @@ public class ClickObject : MonoBehaviour {
     public List<GameObject> neighborCubes;
     public GameObject hiddenObjectPanel;
     private bool hiddenObjectDiscovered = false;
+    private bool dangerSquare = false; // this means a player can be caught if they are on one of these squares
     //public GameObject TextPanel;
 
     // This is called when the currentSquare the player is in is this square
     public void holdingPlayer() {
+        setCharacter(Player.instance.gameObject);
         foreach(GameObject neighbor in neighborCubes) {
             neighbor.GetComponent<ClickObject>().selectedSquare();
         }
@@ -29,6 +31,7 @@ public class ClickObject : MonoBehaviour {
     }
 
     public void clearSquares() {
+        setCharacter(null);
         foreach(GameObject neighbor in neighborCubes) {
             neighbor.GetComponent<ClickObject>().notAvailable();
         }
@@ -45,7 +48,8 @@ public class ClickObject : MonoBehaviour {
     // when the cube is clicked
 	void OnMouseDown() {
         // this is a hiddenobject tile clicked
-        if(highlightable && hiddenObjectPanel != null && !hiddenObjectDiscovered && GameObject.Find("Player").GetComponent<Player>().currentSquare.Equals(gameObject)) {
+        if(highlightable && hiddenObjectPanel != null && !hiddenObjectDiscovered && Player.instance.currentSquare.Equals(gameObject)) {
+            // Hidden Object Objective
             if(ObjectiveManager.instance.currentObjective == 1) {
                 ObjectiveManager.instance.objectiveComplete();
             }
@@ -86,13 +90,13 @@ public class ClickObject : MonoBehaviour {
         if(character != null) {
             character.GetComponent<NPC>().textPanel.SetActive(false);
         }
-        GameObject.Find("Player").GetComponent<Player>().finished();
+        Player.instance.finished();
     }
 
     // this is the same hack which is even worse than having just 1 terrible function
     private void disableObjectPanel() {
         hiddenObjectPanel.SetActive(false);
-        GameObject.Find("Player").GetComponent<Player>().finished();
+        Player.instance.finished();
     }
 
     public void setCharacter(GameObject character) {
@@ -101,5 +105,13 @@ public class ClickObject : MonoBehaviour {
 
     public GameObject getCharacter() {
         return character;
+    }
+
+    public void personalSquare() {
+        dangerSquare = true;
+    }
+
+    public bool isSquareDangerous() {
+        return dangerSquare;
     }
 }

@@ -50,9 +50,11 @@ public class ClickObject : MonoBehaviour {
         // this is a hiddenobject tile clicked
         if(highlightable && hiddenObjectPanel != null && !hiddenObjectDiscovered && Player.instance.currentSquare.Equals(gameObject)) {
             // Hidden Object Objective
+            /*
             if(ObjectiveManager.instance.currentObjective == 1) {
                 ObjectiveManager.instance.objectiveComplete();
             }
+            */
             hiddenObjectPanel.SetActive(true);
             hiddenObjectDiscovered = true;
             notAvailable();
@@ -67,9 +69,11 @@ public class ClickObject : MonoBehaviour {
             // this is conversation
         } else if(highlightable && character != null) {
             // player engages in conversation w/ character
+            /*
             if(ObjectiveManager.instance.currentObjective == 0) {
                 ObjectiveManager.instance.objectiveComplete();
             }
+            */
             NPC targetNPC = character.GetComponent<NPC>();
             if(targetNPC != null) {
                 targetNPC.textPanel.SetActive(true);

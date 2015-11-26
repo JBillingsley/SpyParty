@@ -30,8 +30,9 @@ public class RtsCameraMouse : MonoBehaviour
     public string RotateInputAxis = "Mouse X";
     public string TiltInputAxis = "Mouse Y";
     public string ZoomInputAxis = "Mouse ScrollWheel";
-    public KeyCode PanKey1 = KeyCode.LeftShift;
-    public KeyCode PanKey2 = KeyCode.RightShift;
+	public KeyCode PanKey = KeyCode.Mouse2;
+	public KeyCode PanKey1 = KeyCode.Mouse2;
+    public KeyCode PanKey2 = KeyCode.Mouse2;
 
     //
 
@@ -41,7 +42,7 @@ public class RtsCameraMouse : MonoBehaviour
 
     protected void Reset()
     {
-        MouseOrbitButton = KeyCode.Mouse2;    // middle mouse by default (probably should not use right mouse since it doesn't work well in browsers)
+        MouseOrbitButton = KeyCode.Mouse1;    // middle mouse by default (probably should not use right mouse since it doesn't work well in browsers)
 
         AllowScreenEdgeMove = true;
         ScreenEdgeMoveBreaksFollow = true;
@@ -51,6 +52,7 @@ public class RtsCameraMouse : MonoBehaviour
         AllowPan = true;
         PanBreaksFollow = true;
         PanSpeed = 50f;
+		PanKey = KeyCode.Mouse2;
         PanKey1 = KeyCode.LeftShift;
         PanKey2 = KeyCode.RightShift;
 
@@ -84,23 +86,22 @@ public class RtsCameraMouse : MonoBehaviour
             _rtsCamera.Distance -= scroll * ZoomSpeed * Time.deltaTime;
         }
 
+		if (Input.GetKey(PanKey))
+		{
+			// pan
+			var panX = -1 * Input.GetAxisRaw("Mouse X") * PanSpeed * Time.deltaTime;
+			var panZ = -1 * Input.GetAxisRaw("Mouse Y") * PanSpeed * Time.deltaTime;
+			
+			_rtsCamera.AddToPosition(panX, 0, panZ);
+			
+			if (PanBreaksFollow && (Mathf.Abs(panX) > 0.001f || Mathf.Abs(panZ) > 0.001f))
+			{
+				_rtsCamera.EndFollow();
+			}
+		}
         if (Input.GetKey(MouseOrbitButton))
         {
-            if (AllowPan && (Input.GetKey(PanKey1) || Input.GetKey(PanKey2)))
-            {
-                // pan
-                var panX = -1 * Input.GetAxisRaw("Mouse X") * PanSpeed * Time.deltaTime;
-                var panZ = -1 * Input.GetAxisRaw("Mouse Y") * PanSpeed * Time.deltaTime;
 
-                _rtsCamera.AddToPosition(panX, 0, panZ);
-
-                if (PanBreaksFollow && (Mathf.Abs(panX) > 0.001f || Mathf.Abs(panZ) > 0.001f))
-                {
-                    _rtsCamera.EndFollow();
-                }
-            }
-            else
-            {
                 // orbit
 
                 if (AllowTilt)
@@ -114,7 +115,6 @@ public class RtsCameraMouse : MonoBehaviour
                     var rot = Input.GetAxisRaw(RotateInputAxis);
                     _rtsCamera.Rotation += rot * RotateSpeed * Time.deltaTime;
                 }
-            }
         }
 
         if (AllowScreenEdgeMove && (!_rtsCamera.IsFollowing || ScreenEdgeMoveBreaksFollow))

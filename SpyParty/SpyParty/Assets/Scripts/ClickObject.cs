@@ -11,17 +11,8 @@ public class ClickObject : MonoBehaviour {
     public GameObject hiddenObjectPanel;
     private bool hiddenObjectDiscovered = false;
     private bool dangerSquare = false; // this means a player can be caught if they are on one of these squares
-    private PathNode thisPath = null;
     //public GameObject TextPanel;
 
-    public void setThisPath(PathNode path) {
-        thisPath = path;
-    //    Debug.Log(string.Format("path set to node {0}", path.name));
-    }
-
-    public PathNode getThisPath() {
-        return thisPath;
-    }
     // This is called when the currentSquare the player is in is this square
     public void holdingPlayer() {
         setCharacter(Player.instance.gameObject);
@@ -90,7 +81,7 @@ public class ClickObject : MonoBehaviour {
             }
             /*
              * tile holding npc is clicked
-             * npc checks for a piece of info to display
+             * npc checks for a new piece of info to display
              * new convo thing that was chosen is displayed
              * wait some time longer than half a second before npc takes a turn
              * call Player.turn()

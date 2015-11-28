@@ -12,6 +12,51 @@ ModelImporter:
     100008: pCylinder6
     100010: pCylinder8
     100012: pSphere1
+    100014: businessman
+    100016: Char_a_5
+    100018: Char_B_1
+    100020: Char_e_4
+    100022: Char_i_6
+    100024: Char_m_1
+    100026: Char_n_3
+    100028: Char_n_4
+    100030: Char_s_2
+    100032: Char_s_3
+    100034: Char_s_4
+    100036: Char_u_1
+    100038: curve12
+    100040: curve13
+    100042: curve14
+    100044: curve15
+    100046: curve16
+    100048: curve17
+    100050: curve18
+    100052: curve19
+    100054: curve20
+    100056: curve21
+    100058: curve22
+    100060: curve23
+    100062: curve24
+    100064: curve25
+    100066: curve26
+    100068: curve27
+    100070: nurbsToPoly6
+    100072: pCube18
+    100074: Text_Businessman_1
+    100076: Trim_Char_a_5_1
+    100078: Trim_Char_B_1_1
+    100080: Trim_Char_e_4_1
+    100082: Trim_Char_i_6_1
+    100084: Trim_Char_m_1_1
+    100086: Trim_Char_n_3_1
+    100088: Trim_Char_n_4_1
+    100090: Trim_Char_s_2_1
+    100092: Trim_Char_s_3_1
+    100094: Trim_Char_s_4_1
+    100096: Trim_Char_u_1_1
+    100098: Trim_Text_Businessman_1_1
+    100100: pCylinder16
+    100102: professor
     400000: //RootNode
     400002: group2
     400004: pCylinder4
@@ -19,21 +64,108 @@ ModelImporter:
     400008: pCylinder6
     400010: pCylinder8
     400012: pSphere1
+    400014: businessman
+    400016: Char_a_5
+    400018: Char_B_1
+    400020: Char_e_4
+    400022: Char_i_6
+    400024: Char_m_1
+    400026: Char_n_3
+    400028: Char_n_4
+    400030: Char_s_2
+    400032: Char_s_3
+    400034: Char_s_4
+    400036: Char_u_1
+    400038: curve12
+    400040: curve13
+    400042: curve14
+    400044: curve15
+    400046: curve16
+    400048: curve17
+    400050: curve18
+    400052: curve19
+    400054: curve20
+    400056: curve21
+    400058: curve22
+    400060: curve23
+    400062: curve24
+    400064: curve25
+    400066: curve26
+    400068: curve27
+    400070: nurbsToPoly6
+    400072: pCube18
+    400074: Text_Businessman_1
+    400076: Trim_Char_a_5_1
+    400078: Trim_Char_B_1_1
+    400080: Trim_Char_e_4_1
+    400082: Trim_Char_i_6_1
+    400084: Trim_Char_m_1_1
+    400086: Trim_Char_n_3_1
+    400088: Trim_Char_n_4_1
+    400090: Trim_Char_s_2_1
+    400092: Trim_Char_s_3_1
+    400094: Trim_Char_s_4_1
+    400096: Trim_Char_u_1_1
+    400098: Trim_Text_Businessman_1_1
+    400100: pCylinder16
+    400102: professor
     2300000: pCylinder4
     2300002: pCylinder5
     2300004: pCylinder6
     2300006: pCylinder8
     2300008: pSphere1
+    2300010: nurbsToPoly6
+    2300012: pCube18
+    2300014: Trim_Char_a_5_1
+    2300016: Trim_Char_B_1_1
+    2300018: Trim_Char_e_4_1
+    2300020: Trim_Char_i_6_1
+    2300022: Trim_Char_m_1_1
+    2300024: Trim_Char_n_3_1
+    2300026: Trim_Char_n_4_1
+    2300028: Trim_Char_s_2_1
+    2300030: Trim_Char_s_3_1
+    2300032: Trim_Char_s_4_1
+    2300034: Trim_Char_u_1_1
+    2300036: pCylinder16
     3300000: pCylinder4
     3300002: pCylinder5
     3300004: pCylinder6
     3300006: pCylinder8
     3300008: pSphere1
+    3300010: nurbsToPoly6
+    3300012: pCube18
+    3300014: Trim_Char_a_5_1
+    3300016: Trim_Char_B_1_1
+    3300018: Trim_Char_e_4_1
+    3300020: Trim_Char_i_6_1
+    3300022: Trim_Char_m_1_1
+    3300024: Trim_Char_n_3_1
+    3300026: Trim_Char_n_4_1
+    3300028: Trim_Char_s_2_1
+    3300030: Trim_Char_s_3_1
+    3300032: Trim_Char_s_4_1
+    3300034: Trim_Char_u_1_1
+    3300036: pCylinder16
     4300000: pCylinder8
     4300002: pCylinder4
     4300004: pCylinder6
     4300006: pSphere1
     4300008: pCylinder5
+    4300010: nurbsToPoly6
+    4300012: pCube18
+    4300014: Trim_Char_B_1_1
+    4300016: Trim_Char_u_1_1
+    4300018: Trim_Char_s_2_1
+    4300020: Trim_Char_i_6_1
+    4300022: Trim_Char_n_3_1
+    4300024: Trim_Char_e_4_1
+    4300026: Trim_Char_s_3_1
+    4300028: Trim_Char_s_4_1
+    4300030: Trim_Char_m_1_1
+    4300032: Trim_Char_a_5_1
+    4300034: Trim_Char_n_4_1
+    4300036: pCylinder16
     9500000: //RootNode
   materials:
     importMaterials: 1

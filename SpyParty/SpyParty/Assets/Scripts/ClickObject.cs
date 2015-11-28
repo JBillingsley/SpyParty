@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-[RequireComponent(typeof (Collider))]
+[RequireComponent(typeof(Collider))]
 public class ClickObject : MonoBehaviour {
     private bool highlightable = false;
     private GameObject character;
@@ -11,8 +11,17 @@ public class ClickObject : MonoBehaviour {
     public GameObject hiddenObjectPanel;
     private bool hiddenObjectDiscovered = false;
     private bool dangerSquare = false; // this means a player can be caught if they are on one of these squares
+    private PathNode thisPath = null;
     //public GameObject TextPanel;
 
+    public void setThisPath(PathNode path) {
+        thisPath = path;
+        //    Debug.Log(string.Format("path set to node {0}", path.name));
+    }
+
+    public PathNode getThisPath() {
+        return thisPath;
+    }
     // This is called when the currentSquare the player is in is this square
     public void holdingPlayer() {
         setCharacter(Player.instance.gameObject);
@@ -46,7 +55,7 @@ public class ClickObject : MonoBehaviour {
     }
 
     // when the cube is clicked
-	void OnMouseDown() {
+    void OnMouseDown() {
         // this is a hiddenobject tile clicked
         if(highlightable && hiddenObjectPanel != null && !hiddenObjectDiscovered && Player.instance.currentSquare.Equals(gameObject)) {
             // Hidden Object Objective
@@ -62,7 +71,7 @@ public class ClickObject : MonoBehaviour {
             // If we need to do other stuff do it here
 
             // this is normal character movement
-        } else  if(highlightable && character == null) {
+        } else if(highlightable && character == null) {
             // the player moves to this square
             GameObject.Find("Player").GetComponent<Player>().moving(this.gameObject);
 
@@ -81,7 +90,7 @@ public class ClickObject : MonoBehaviour {
             }
             /*
              * tile holding npc is clicked
-             * npc checks for a new piece of info to display
+             * npc checks for a piece of info to display
              * new convo thing that was chosen is displayed
              * wait some time longer than half a second before npc takes a turn
              * call Player.turn()

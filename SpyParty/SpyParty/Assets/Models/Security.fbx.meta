@@ -1,0 +1,160 @@
+fileFormatVersion: 2
+guid: e29eb018b34bb4d5fae510511a88e494
+timeCreated: 1448755478
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: group4
+    100002: pCube22
+    100004: pCube23
+    100006: pCube24
+    100008: pCylinder13
+    100010: pCylinder17
+    100012: pCylinder9
+    100014: pSphere3
+    100016: Security
+    100018: //RootNode
+    100020: Trim_Char_c_2_1
+    100022: Trim_Char_e_5_1
+    100024: Trim_Char_i_7_1
+    100026: Trim_Char_r_4_1
+    100028: Trim_Char_S_3_1
+    100030: Trim_Char_s_5_1
+    100032: Trim_Char_t_7_1
+    100034: Trim_Char_u_2_1
+    100036: Trim_Char_y_4_1
+    100038: Trim_Text_Security_1_1
+    400000: group4
+    400002: pCube22
+    400004: pCube23
+    400006: pCube24
+    400008: pCylinder13
+    400010: pCylinder17
+    400012: pCylinder9
+    400014: pSphere3
+    400016: //RootNode
+    400018: Security
+    400020: Trim_Char_c_2_1
+    400022: Trim_Char_e_5_1
+    400024: Trim_Char_i_7_1
+    400026: Trim_Char_r_4_1
+    400028: Trim_Char_S_3_1
+    400030: Trim_Char_s_5_1
+    400032: Trim_Char_t_7_1
+    400034: Trim_Char_u_2_1
+    400036: Trim_Char_y_4_1
+    400038: Trim_Text_Security_1_1
+    2300000: pCube22
+    2300002: pCube23
+    2300004: pCube24
+    2300006: pCylinder13
+    2300008: pCylinder17
+    2300010: pCylinder9
+    2300012: pSphere3
+    2300014: Trim_Char_c_2_1
+    2300016: Trim_Char_e_5_1
+    2300018: Trim_Char_i_7_1
+    2300020: Trim_Char_r_4_1
+    2300022: Trim_Char_S_3_1
+    2300024: Trim_Char_s_5_1
+    2300026: Trim_Char_t_7_1
+    2300028: Trim_Char_u_2_1
+    2300030: Trim_Char_y_4_1
+    3300000: pCube22
+    3300002: pCube23
+    3300004: pCube24
+    3300006: pCylinder13
+    3300008: pCylinder17
+    3300010: pCylinder9
+    3300012: pSphere3
+    3300014: Trim_Char_c_2_1
+    3300016: Trim_Char_e_5_1
+    3300018: Trim_Char_i_7_1
+    3300020: Trim_Char_r_4_1
+    3300022: Trim_Char_S_3_1
+    3300024: Trim_Char_s_5_1
+    3300026: Trim_Char_t_7_1
+    3300028: Trim_Char_u_2_1
+    3300030: Trim_Char_y_4_1
+    4300000: pCylinder9
+    4300002: pCylinder13
+    4300004: pSphere3
+    4300006: Trim_Char_s_5_1
+    4300008: pCube23
+    4300010: pCylinder17
+    4300012: pCube22
+    4300014: pCube24
+    4300016: Trim_Char_S_3_1
+    4300018: Trim_Char_e_5_1
+    4300020: Trim_Char_c_2_1
+    4300022: Trim_Char_u_2_1
+    4300024: Trim_Char_r_4_1
+    4300026: Trim_Char_i_7_1
+    4300028: Trim_Char_t_7_1
+    4300030: Trim_Char_y_4_1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

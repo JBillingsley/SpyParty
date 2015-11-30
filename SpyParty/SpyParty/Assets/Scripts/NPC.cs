@@ -73,6 +73,7 @@ public class NPC : MonoBehaviour {
                 updateLocation();
                 break;
             case AIStates.PERSUE:
+             //   Debug.Log("You GETTIN CHASED");
                 foreach(GameObject square in persueRoom) {
                     if(squareContainsPlayer(square)) {
                         // we do a persuit 

@@ -34,11 +34,12 @@ public class ClickObject : MonoBehaviour {
     // This is called when the currentSquare the player is in is this square
     public void holdingPlayer() {
         setCharacter(Player.instance.gameObject);
+        selectedSquare();
         foreach(GameObject neighbor in neighborCubes) {
             neighbor.GetComponent<ClickObject>().selectedSquare();
         }
         if(hiddenObjectNotification != null && !hiddenObjectDiscovered) {
-            selectedSquare();
+           // selectedSquare();
         }
     }
 
@@ -50,11 +51,12 @@ public class ClickObject : MonoBehaviour {
 
     public void clearSquares() {
         setCharacter(null);
+        notAvailable();
         foreach(GameObject neighbor in neighborCubes) {
             neighbor.GetComponent<ClickObject>().notAvailable();
         }
         if(hiddenObjectDiscovered && highlightable) {
-            notAvailable();
+          //  notAvailable();
         }
     }
 
@@ -71,7 +73,7 @@ public class ClickObject : MonoBehaviour {
                 manageHiddenItem();
 
                 // this is normal character movement
-            } else if(highlightable && character == null) {
+            } else if(highlightable && (character == null || character.GetComponent<NPC>() == null)) {
                 // the player moves to this square
                 GameObject.Find("Player").GetComponent<Player>().moving(this.gameObject);
 

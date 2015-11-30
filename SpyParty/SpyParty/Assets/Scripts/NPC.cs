@@ -212,6 +212,7 @@ public class NPC : MonoBehaviour {
             }
         }
         Debug.LogError("we have dropped out of the loop");
+        cleanPathNodes();
     }
 
     void handleNeighborSetting(PathNode current) {

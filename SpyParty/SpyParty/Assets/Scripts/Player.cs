@@ -6,8 +6,12 @@ public class Player : MonoBehaviour {
     public GameObject startSquare;
     public GameObject currentSquare;
     public float YOffsetFromBoard;
+    public GameObject examineIcon;
+    public GameObject hideIcon;
     public delegate void PlayerTurn();
     public static event PlayerTurn turn;
+
+    private GameObject currentIcon;
 
     private static Player _instance;
     public static Player instance {
@@ -47,6 +51,7 @@ public class Player : MonoBehaviour {
     void updateCurrentSquare() {
        // Debug.Log(string.Format("The players updated position is {0}", transform.position));
         currentSquare.GetComponent<ClickObject>().holdingPlayer();
+        updateIcon();
         finished();
     }
 
@@ -65,5 +70,18 @@ public class Player : MonoBehaviour {
                                               "time", animationTime,
                                               "easetype", iTween.EaseType.easeInOutQuad));
         currentSquare.GetComponent<ClickObject>().holdingPlayer();
+    }
+
+    public void updateIcon() {
+        if(currentSquare.GetComponent<ClickObject>().hiddenObjectNotification != null) {
+            currentIcon = examineIcon;
+            currentIcon.SetActive(true);
+        } else if(currentSquare.GetComponent<ClickObject>().hideable) {
+            currentIcon = hideIcon;
+            currentIcon.SetActive(true);
+        } else if(currentIcon != null) {
+            currentIcon.SetActive(false);
+            currentIcon = null;
+        }
     }
 }

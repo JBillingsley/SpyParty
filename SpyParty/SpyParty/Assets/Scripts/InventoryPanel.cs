@@ -17,10 +17,21 @@ public class InventoryPanel : MonoBehaviour {
     }
 
     void Start() {
-        gameObject.SetActive(false);
+       // gameObject.SetActive(false);
     }
 
     public void toggleInventory() {
         gameObject.SetActive(!gameObject.activeSelf);
+    }
+
+    public void inventoryOn() {
+        if(BlackBoxPanel.instance.gameObject.activeSelf) {
+            BlackBoxPanel.instance.gameObject.SetActive(false);
+        }
+        gameObject.SetActive(true);
+    }
+
+    public void toggleGameObject(GameObject target) {
+        target.SetActive(!target.activeSelf);
     }
 }

@@ -11,7 +11,7 @@ public class ClickObject : MonoBehaviour {
     public List<GameObject> neighborCubes;
     public GameObject hiddenObjectNotification;
     public string hiddenObjectText;
-    public GameObject inventoryItem;
+    public List<GameObject> inventoryItems;
     public bool hideable;
     private bool hiddenObjectDiscovered = false;
     private bool dangerSquare = false; // this means a player can be caught if they are on one of these squares
@@ -48,6 +48,9 @@ public class ClickObject : MonoBehaviour {
     void selectedSquare() {
         this.highlightable = true;
         GetComponent<Renderer>().material.color = Color.green;
+        if(character != null && character.GetComponent<NPC>() != null) {
+            character.GetComponent<NPC>().conversationIcon.SetActive(true);
+        }
     }
 
     public void clearSquares() {
@@ -64,6 +67,9 @@ public class ClickObject : MonoBehaviour {
     void notAvailable() {
         highlightable = false;
         GetComponent<Renderer>().material.color = Color.white;
+        if(character != null && character.GetComponent<NPC>() != null) {
+            character.GetComponent<NPC>().conversationIcon.SetActive(false);
+        }
     }
 
     // when the cube is clicked
@@ -80,12 +86,13 @@ public class ClickObject : MonoBehaviour {
 
                 // gotta manage the character being hidden
                 setCharacter(null);
+                Player.instance.hideIcon.SetActive(false);
                 Player.instance.finished();
                 Debug.Log("THE CHARACTER IS HIDING");
                 return;
             } else if(highlightable && (character == null || character.GetComponent<Player>() != null)) {
                 // the player moves to this square
-                Debug.Log("moving");
+               // Debug.Log("moving");
                 GameObject.Find("Player").GetComponent<Player>().moving(this.gameObject);
                 return;
                 // this is conversation
@@ -98,6 +105,7 @@ public class ClickObject : MonoBehaviour {
                 */
                 NPC targetNPC = character.GetComponent<NPC>();
                 if(targetNPC != null) {
+                    targetNPC.conversationIcon.SetActive(false);
                     targetNPC.textPanel.SetActive(true);
                     Invoke("disableTextPanel", 3f);
                 }
@@ -115,9 +123,13 @@ public class ClickObject : MonoBehaviour {
             ObjectiveManager.instance.objectiveComplete();
         }
         */
+        Player.instance.examineIcon.SetActive(false);
         hiddenObjectNotification.SetActive(true);
         hiddenObjectNotification.GetComponentInChildren<Text>().text = hiddenObjectText;
-        inventoryItem.SetActive(true);
+        foreach(GameObject target in inventoryItems) {
+            target.SetActive(true);
+        }
+        
         hiddenObjectDiscovered = true;
         notAvailable();
         Invoke("disableObjectNotification", 3f);

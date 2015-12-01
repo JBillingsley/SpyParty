@@ -18,6 +18,7 @@ public class NPC : AICharacters {
     public List<GameObject> persueRoom;
     public GameObject goalPoint;
     public AIStates state;
+    public GameObject conversationIcon;
     private float animationTime = 0.6f;
     private List<PathNode> pathToGoal;
     private List<PathNode> openSet = new List<PathNode>(); // set of nodes to be evaluated
@@ -152,6 +153,7 @@ public class NPC : AICharacters {
             selectRandomState();
         }
         currentSquare.GetComponent<ClickObject>().setCharacter(this.gameObject);
+        updateConvoIcon();
         //transform.position = new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y, currentSquare.transform.position.z - 1f);
     }
 
@@ -242,7 +244,7 @@ public class NPC : AICharacters {
                 //      Debug.Log(string.Format("pathnode is null for {0}", target.name));
                 GameObject container = new GameObject();
                 container.tag = "Finish";
-                container.name = target.name + "Path";
+                container.name = target.name + "Path" + name;
                 PathNode targetNode = container.AddComponent<PathNode>();
                 //PathNode targetNode = target.GetComponent<PathNode>();
                 //          Debug.Log(targetNode);
@@ -265,37 +267,22 @@ public class NPC : AICharacters {
     private void cleanPathNodes() {
         foreach(GameObject target in GameObject.FindGameObjectsWithTag("Finish")) {
             //        Debug.Log(string.Format("Cleaning up target {0}", target.name));
-            if(target.GetComponent<PathNode>() != null) {
-                target.GetComponent<PathNode>().thisSquare.GetComponent<ClickObject>().setThisPath(null);
-            }
-            Destroy(target);
-        }
-    }
-}
-
-/*
-currentSquare.GetComponent<ClickObject>().setCharacter(null);
-if(goalPoint != null) {
-    float distance = 1000000f;
-   GameObject potentialSquare = null;
-    // this loop finds a square in the direction of the goal point
-    foreach(GameObject square in currentSquare.GetComponent<ClickObject>().neighborCubes) {
-        // the second half of this is a conditional hack so NPCs dont end up in the same square
-        if(Mathf.Abs(Vector3.Distance(square.transform.position, goalPoint.transform.position)) < distance && squareDoesntContainNPC(square)) {
-            distance = Mathf.Abs(Vector3.Distance(square.transform.position, goalPoint.transform.position));
-            // if the square contains the player
-            if(squareContainsPlayer(square)) {
-                // if it is dangerous it can be chosen 
-                if(square.GetComponent<ClickObject>().isSquareDangerous()) {
-                    potentialSquare = square;
+          //  if(target.name.Contains("Path" + name)) {
+                if(target.GetComponent<PathNode>() != null) {
+                    target.GetComponent<PathNode>().thisSquare.GetComponent<ClickObject>().setThisPath(null);
                 }
-                // if it doesnt contain the player it can be chosen
-            } else {
-                potentialSquare = square;
-            }
+                Destroy(target);
+          //  }
         }
     }
-    return potentialSquare;
+
+    private void updateConvoIcon() {
+        foreach(GameObject neighbor in currentSquare.GetComponent<ClickObject>().neighborCubes) {
+            if(neighbor.GetComponent<ClickObject>().getCharacter() != null && neighbor.GetComponent<ClickObject>().getCharacter().GetComponent<Player>() != null) {
+                conversationIcon.SetActive(true);
+                return;
+            }
+        }
+        conversationIcon.SetActive(false);
+    }
 }
-return null;
-*/

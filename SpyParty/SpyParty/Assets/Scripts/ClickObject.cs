@@ -12,6 +12,7 @@ public class ClickObject : MonoBehaviour {
     public GameObject hiddenObjectNotification;
     public string hiddenObjectText;
     public GameObject inventoryItem;
+    public bool hideable;
     private bool hiddenObjectDiscovered = false;
     private bool dangerSquare = false; // this means a player can be caught if they are on one of these squares
     private PathNode thisPath = null;
@@ -67,16 +68,26 @@ public class ClickObject : MonoBehaviour {
 
     // when the cube is clicked
     void OnMouseDown() {
+       // Debug.Log(string.Format("this square highlightablity is {0} and the character is {1}", hideable, character.GetComponent<Player>()));
         if(!EventSystem.current.IsPointerOverGameObject()) {
             // this is a hiddenobject tile clicked
             if(highlightable && hiddenObjectNotification != null && !hiddenObjectDiscovered && Player.instance.currentSquare.Equals(gameObject)) {
                 manageHiddenItem();
 
-                // this is normal character movement
-            } else if(highlightable && (character == null || character.GetComponent<NPC>() == null)) {
-                // the player moves to this square
-                GameObject.Find("Player").GetComponent<Player>().moving(this.gameObject);
+                // hidden character
+                return;
+            } else if(highlightable && Player.instance.currentSquare.Equals(gameObject) && hideable) {
 
+                // gotta manage the character being hidden
+                setCharacter(null);
+                Player.instance.finished();
+                Debug.Log("THE CHARACTER IS HIDING");
+                return;
+            } else if(highlightable && (character == null || character.GetComponent<Player>() != null)) {
+                // the player moves to this square
+                Debug.Log("moving");
+                GameObject.Find("Player").GetComponent<Player>().moving(this.gameObject);
+                return;
                 // this is conversation
             } else if(highlightable && character != null) {
                 // player engages in conversation w/ character
@@ -90,14 +101,10 @@ public class ClickObject : MonoBehaviour {
                     targetNPC.textPanel.SetActive(true);
                     Invoke("disableTextPanel", 3f);
                 }
-                /*
-                 * tile holding npc is clicked
-                 * npc checks for a piece of info to display
-                 * new convo thing that was chosen is displayed
-                 * wait some time longer than half a second before npc takes a turn
-                 * call Player.turn()
-                 */
-            }
+                return;
+                // character movement
+            } 
+          //  Player.instance.finished();
         }
     }
 

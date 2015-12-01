@@ -5,14 +5,19 @@ using System.Linq;
 
 public enum AIStates { WANDER, IDLE, PERSUE };
 
-public class NPC : MonoBehaviour {
+public abstract class AICharacters : MonoBehaviour {
+    public abstract void chooseNewGoal();
+    public abstract bool characterBlockConditions();
+}
+
+public class NPC : AICharacters {
     public GameObject currentSquare;
     public GameObject board;
     public float YOffsetFromBoard;
     public GameObject textPanel;
     public List<GameObject> persueRoom;
-    private GameObject goalPoint;
-    private AIStates state;
+    public GameObject goalPoint;
+    public AIStates state;
     private float animationTime = 0.6f;
     private List<PathNode> pathToGoal;
     private List<PathNode> openSet = new List<PathNode>(); // set of nodes to be evaluated
@@ -30,7 +35,7 @@ public class NPC : MonoBehaviour {
         if(goalPoint == null) {
             // Debug.Log("goal being set");
 
-            goalPoint = board.GetComponentsInChildren<ClickObject>()[Random.Range(0, board.GetComponentsInChildren<ClickObject>().Length)].gameObject;
+            chooseNewGoal();
             //  Debug.Log(string.Format("the goalpoint name is {0}", goalPoint));
             findPath();
             state = AIStates.IDLE;
@@ -52,7 +57,7 @@ public class NPC : MonoBehaviour {
             case AIStates.WANDER:
                 if(goalPoint == null) {
                     selectRandomState();
-                    goalPoint = board.GetComponentsInChildren<ClickObject>()[Random.Range(0, board.GetComponentsInChildren<ClickObject>().Length)].gameObject;
+                    chooseNewGoal();
                     return;
                 }
                 if(currentSquare.Equals(goalPoint)) {
@@ -60,7 +65,7 @@ public class NPC : MonoBehaviour {
                     // choose a new state and return
                     //     Debug.Log("we have moved into the goal square so we are calculating a new square to wander to");
                     selectRandomState();
-                    goalPoint = board.GetComponentsInChildren<ClickObject>()[Random.Range(0, board.GetComponentsInChildren<ClickObject>().Length)].gameObject;
+                    chooseNewGoal();
                     cleanPathNodes();
                     findPath();
                     //      Debug.Log(goalPoint);
@@ -107,7 +112,8 @@ public class NPC : MonoBehaviour {
             findPath();
         }
         */
-        if(pathToGoal.Count <= 0) {
+        //NOTE I added the || statement to check if there is a character next to this object
+        if(pathToGoal.Count <= 0 || characterBlockConditions()) {
             //  goalPoint = board.GetComponentsInChildren<ClickObject>()[Random.Range(0, board.GetComponentsInChildren<ClickObject>().Length)].gameObject;
             cleanPathNodes();
             //   Debug.Log("finding a new path");
@@ -127,6 +133,14 @@ public class NPC : MonoBehaviour {
 
     }
 
+    public override bool characterBlockConditions() {
+        if(pathToGoal[0].thisSquare.GetComponent<ClickObject>().getCharacter() == null || pathToGoal[0].thisSquare.GetComponent<ClickObject>().getCharacter().GetComponent<Player>() == null) {
+            return false;
+        } else {
+            Debug.Log("character block conditions met by " + this.name);
+            return true;
+        }
+    }
     // Update location performs the physical itween move to the next square, as well as setting the character of the square to this object
     void updateLocation() {
         iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y + YOffsetFromBoard, currentSquare.transform.position.z),
@@ -167,6 +181,10 @@ public class NPC : MonoBehaviour {
         } else {
             return false;
         }
+    }
+
+    public override void chooseNewGoal() {
+        goalPoint = board.GetComponentsInChildren<ClickObject>()[Random.Range(0, board.GetComponentsInChildren<ClickObject>().Length)].gameObject;
     }
 
     public void findPath() {

@@ -1,0 +1,282 @@
+fileFormatVersion: 2
+guid: aa49b88d218c54e7cb2ddc875462b91f
+timeCreated: 1448876524
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: desk02:book
+    100002: desk02:book 1
+    100004: desk02:book1
+    100006: desk02:book2
+    100008: desk02:book3
+    100010: desk02:book3 1
+    100012: desk02:book4
+    100014: desk02:book4 1
+    100016: desk02:book5
+    100018: desk02:book5 1
+    100020: desk02:book6
+    100022: desk02:book6 1
+    100024: desk02:book7
+    100026: desk02:book8
+    100028: desk02:calendar
+    100030: desk02:calendar 1
+    100032: desk02:calendar_paper
+    100034: desk02:calendar_torus
+    100036: desk02:calendar_torus 1
+    100038: desk02:calendar_torus1
+    100040: desk02:calendar_torus2
+    100042: desk02:calendar_torus3
+    100044: desk02:camera
+    100046: desk02:camera 1
+    100048: desk02:glass
+    100050: desk02:glass1
+    100052: desk02:glasses
+    100054: desk02:glasses_l
+    100056: desk02:glasses_r
+    100058: desk02:pCube1
+    100060: desk02:pCube1 1
+    100062: desk02:pCube13
+    100064: desk02:pCube16
+    100066: desk02:pCube17
+    100068: desk02:pCube18
+    100070: desk02:pCube19
+    100072: desk02:pCube2
+    100074: desk02:pCube20
+    100076: desk02:pCylinder1
+    100078: desk02:pCylinder1 1
+    100080: desk02:pCylinder2
+    100082: desk02:pCylinder2 1
+    100084: desk02:pCylinder23
+    100086: desk02:polySurface6
+    100088: desk02:pPipe1
+    100090: desk02:pPipe1 1
+    100092: desk02:pPipe9
+    100094: //RootNode
+    400000: desk02:book
+    400002: desk02:book 1
+    400004: desk02:book1
+    400006: desk02:book2
+    400008: desk02:book3
+    400010: desk02:book3 1
+    400012: desk02:book4
+    400014: desk02:book4 1
+    400016: desk02:book5
+    400018: desk02:book5 1
+    400020: desk02:book6
+    400022: desk02:book6 1
+    400024: desk02:book7
+    400026: desk02:book8
+    400028: desk02:calendar
+    400030: desk02:calendar 1
+    400032: desk02:calendar_paper
+    400034: desk02:calendar_torus
+    400036: desk02:calendar_torus 1
+    400038: desk02:calendar_torus1
+    400040: desk02:calendar_torus2
+    400042: desk02:calendar_torus3
+    400044: desk02:camera
+    400046: desk02:camera 1
+    400048: desk02:glass
+    400050: desk02:glass1
+    400052: desk02:glasses
+    400054: desk02:glasses_l
+    400056: desk02:glasses_r
+    400058: desk02:pCube1
+    400060: desk02:pCube1 1
+    400062: desk02:pCube13
+    400064: desk02:pCube16
+    400066: desk02:pCube17
+    400068: desk02:pCube18
+    400070: desk02:pCube19
+    400072: desk02:pCube2
+    400074: desk02:pCube20
+    400076: desk02:pCylinder1
+    400078: desk02:pCylinder1 1
+    400080: desk02:pCylinder2
+    400082: desk02:pCylinder2 1
+    400084: desk02:pCylinder23
+    400086: desk02:polySurface6
+    400088: desk02:pPipe1
+    400090: desk02:pPipe1 1
+    400092: desk02:pPipe9
+    400094: //RootNode
+    2300000: desk02:book 1
+    2300002: desk02:book1
+    2300004: desk02:book2
+    2300006: desk02:book3
+    2300008: desk02:book3 1
+    2300010: desk02:book4
+    2300012: desk02:book4 1
+    2300014: desk02:book5
+    2300016: desk02:book5 1
+    2300018: desk02:book6
+    2300020: desk02:book6 1
+    2300022: desk02:calendar 1
+    2300024: desk02:calendar_paper
+    2300026: desk02:calendar_torus 1
+    2300028: desk02:calendar_torus1
+    2300030: desk02:calendar_torus2
+    2300032: desk02:calendar_torus3
+    2300034: desk02:camera 1
+    2300036: desk02:glass
+    2300038: desk02:glass1
+    2300040: desk02:pCube1
+    2300042: desk02:pCube1 1
+    2300044: desk02:pCube13
+    2300046: desk02:pCube16
+    2300048: desk02:pCube17
+    2300050: desk02:pCube18
+    2300052: desk02:pCube19
+    2300054: desk02:pCube2
+    2300056: desk02:pCube20
+    2300058: desk02:pCylinder1
+    2300060: desk02:pCylinder1 1
+    2300062: desk02:pCylinder2
+    2300064: desk02:pCylinder2 1
+    2300066: desk02:pCylinder23
+    2300068: desk02:polySurface6
+    2300070: desk02:pPipe1
+    2300072: desk02:pPipe1 1
+    2300074: desk02:pPipe9
+    3300000: desk02:book 1
+    3300002: desk02:book1
+    3300004: desk02:book2
+    3300006: desk02:book3
+    3300008: desk02:book3 1
+    3300010: desk02:book4
+    3300012: desk02:book4 1
+    3300014: desk02:book5
+    3300016: desk02:book5 1
+    3300018: desk02:book6
+    3300020: desk02:book6 1
+    3300022: desk02:calendar 1
+    3300024: desk02:calendar_paper
+    3300026: desk02:calendar_torus 1
+    3300028: desk02:calendar_torus1
+    3300030: desk02:calendar_torus2
+    3300032: desk02:calendar_torus3
+    3300034: desk02:camera 1
+    3300036: desk02:glass
+    3300038: desk02:glass1
+    3300040: desk02:pCube1
+    3300042: desk02:pCube1 1
+    3300044: desk02:pCube13
+    3300046: desk02:pCube16
+    3300048: desk02:pCube17
+    3300050: desk02:pCube18
+    3300052: desk02:pCube19
+    3300054: desk02:pCube2
+    3300056: desk02:pCube20
+    3300058: desk02:pCylinder1
+    3300060: desk02:pCylinder1 1
+    3300062: desk02:pCylinder2
+    3300064: desk02:pCylinder2 1
+    3300066: desk02:pCylinder23
+    3300068: desk02:polySurface6
+    3300070: desk02:pPipe1
+    3300072: desk02:pPipe1 1
+    3300074: desk02:pPipe9
+    4300000: desk02:calendar_torus
+    4300002: desk02:calendar_torus1
+    4300004: desk02:calendar_torus2
+    4300006: desk02:calendar_torus3
+    4300008: desk02:calendar_paper
+    4300010: desk02:calendar
+    4300012: desk02:camera
+    4300014: desk02:pCylinder23
+    4300016: desk02:pCube13
+    4300018: desk02:pCube16
+    4300020: desk02:polySurface6
+    4300022: desk02:pCube17
+    4300024: desk02:pCube18
+    4300026: desk02:pPipe9
+    4300028: desk02:pCube19
+    4300030: desk02:pCube20
+    4300032: desk02:book
+    4300034: desk02:book1
+    4300036: desk02:book2
+    4300038: desk02:book3
+    4300040: desk02:book4
+    4300042: desk02:book5
+    4300044: desk02:book6
+    4300046: desk02:book3
+    4300048: desk02:book4
+    4300050: desk02:book5
+    4300052: desk02:book6
+    4300054: desk02:pCube1
+    4300056: desk02:pPipe1
+    4300058: desk02:pCylinder1
+    4300060: desk02:pCylinder2
+    4300062: desk02:pCube1
+    4300064: desk02:pPipe1
+    4300066: desk02:pCylinder1
+    4300068: desk02:pCylinder2
+    4300070: desk02:pCube2
+    4300072: desk02:glass1
+    4300074: desk02:glass
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

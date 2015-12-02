@@ -18,8 +18,22 @@ public class Player : MonoBehaviour {
         get {
             if(_instance == null) {
                 _instance = GameObject.Find("Player").GetComponent<Player>();
-            }
+                Debug.Log("we have found an instance " + _instance);
+                DontDestroyOnLoad(_instance.gameObject);
+            } 
             return _instance;
+        }
+    }
+
+    void Awake() {
+        Debug.Log("player is awake");
+        if(_instance == null) {
+            _instance = this;
+            Debug.Log("instance is null instance is now " + _instance);
+            DontDestroyOnLoad(_instance.gameObject);
+        } else if(this != _instance) {
+            Debug.Log("destorying an instance");
+            Destroy(this.gameObject);
         }
     }
    // private bool selected = false;

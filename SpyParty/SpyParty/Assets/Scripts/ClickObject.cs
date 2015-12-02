@@ -9,8 +9,11 @@ public class ClickObject : MonoBehaviour {
     private bool highlightable = false;
     private GameObject character;
     public List<GameObject> neighborCubes;
+    public ClickObject requisiteItem;
     public GameObject hiddenObjectNotification;
+    public bool requisiteItemFound = false;
     public string hiddenObjectText;
+    public string requisiteNotMetText;
     public List<GameObject> inventoryItems;
     public bool hideable;
     private bool hiddenObjectDiscovered = false;
@@ -36,6 +39,7 @@ public class ClickObject : MonoBehaviour {
     public void holdingPlayer() {
         setCharacter(Player.instance.gameObject);
         selectedSquare();
+       // Player.instance.updateIcon();
         foreach(GameObject neighbor in neighborCubes) {
             neighbor.GetComponent<ClickObject>().selectedSquare();
         }
@@ -83,12 +87,12 @@ public class ClickObject : MonoBehaviour {
                 // hidden character
                 return;
             } else if(highlightable && Player.instance.currentSquare.Equals(gameObject) && hideable) {
-
                 // gotta manage the character being hidden
                 setCharacter(null);
                 Player.instance.hideIcon.SetActive(false);
                 Player.instance.finished();
-                Debug.Log("THE CHARACTER IS HIDING");
+               // Debug.Log("THE CHARACTER IS HIDING at time " + Time.time);
+                Invoke("updatePlayerIcon", .7f);
                 return;
             } else if(highlightable && (character == null || character.GetComponent<Player>() != null)) {
                 // the player moves to this square
@@ -116,6 +120,10 @@ public class ClickObject : MonoBehaviour {
         }
     }
 
+    private void updatePlayerIcon() {
+        Player.instance.updateIcon();
+    }
+
     private void manageHiddenItem() {
         // Hidden Object Objective
         /*
@@ -125,12 +133,19 @@ public class ClickObject : MonoBehaviour {
         */
         Player.instance.examineIcon.SetActive(false);
         hiddenObjectNotification.SetActive(true);
-        hiddenObjectNotification.GetComponentInChildren<Text>().text = hiddenObjectText;
-        foreach(GameObject target in inventoryItems) {
-            target.SetActive(true);
+        if(requisiteItem != null && !requisiteItem.requisiteItemFound) {
+            hiddenObjectNotification.GetComponentInChildren<Text>().text = requisiteNotMetText;
+        } else if((requisiteItem != null && requisiteItem.requisiteItemFound) || requisiteItem == null) {
+            hiddenObjectNotification.GetComponentInChildren<Text>().text = hiddenObjectText;
+            foreach(GameObject target in inventoryItems) {
+                target.SetActive(true);
+            }
+
+            hiddenObjectDiscovered = true;
+            requisiteItemFound = true;
         }
+
         
-        hiddenObjectDiscovered = true;
         notAvailable();
         Invoke("disableObjectNotification", 3f);
         // If we need to do other stuff do it here

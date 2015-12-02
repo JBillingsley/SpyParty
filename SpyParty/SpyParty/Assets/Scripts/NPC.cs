@@ -19,6 +19,7 @@ public class NPC : AICharacters {
     public GameObject goalPoint;
     public AIStates state;
     public GameObject conversationIcon;
+    public List<SecurityNPC> securityGuards;
     private float animationTime = 0.6f;
     private List<PathNode> pathToGoal;
     private List<PathNode> openSet = new List<PathNode>(); // set of nodes to be evaluated
@@ -52,6 +53,7 @@ public class NPC : AICharacters {
 
     // States: Wander, Persue, Idle
     void StateMachine() {
+       // Debug.Log("statemachine being called at time " + Time.time);
         //Debug.Log(string.Format("at time {0} the state is {1}", Time.time, state));
         checkRoomInvasion();
         switch(state) {
@@ -149,11 +151,18 @@ public class NPC : AICharacters {
                                               "easetype", iTween.EaseType.easeInOutQuad));
         if(squareContainsPlayer(currentSquare)) {
             Debug.Log("CAUGHT");
+            foreach(SecurityNPC target in securityGuards) {
+                if(target.enabled == false) {
+                    target.enabled = true;
+                    break;
+                }
+            }
             Player.instance.caught();
             selectRandomState();
         }
         currentSquare.GetComponent<ClickObject>().setCharacter(this.gameObject);
         updateConvoIcon();
+       // Player.instance.updateIcon();
         //transform.position = new Vector3(currentSquare.transform.position.x, currentSquare.transform.position.y, currentSquare.transform.position.z - 1f);
     }
 
@@ -170,6 +179,7 @@ public class NPC : AICharacters {
     }
 
     bool squareContainsPlayer(GameObject square) {
+       // Debug.Log(Player.instance);
         if(square.GetComponent<ClickObject>().getCharacter() != null && square.GetComponent<ClickObject>().getCharacter().Equals(Player.instance.gameObject)) {
             return true;
         } else {

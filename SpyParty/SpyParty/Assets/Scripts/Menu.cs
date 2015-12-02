@@ -58,7 +58,7 @@ public class Menu : MonoBehaviour {
 	}
 
 	public void StartGame(){
-		Application.LoadLevel("scene6");
+		Application.LoadLevel("scene7");
 	}
 	
 	public void ExitGame(){
